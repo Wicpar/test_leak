@@ -77,8 +77,8 @@ impl eframe::App for TemplateApp {
                 camera.translate_screen(response.drag_delta());
                 camera.scale_by_on_screen(cursor, ui.input(|it|it.zoom_delta()));
             }
-            // let shapes = black_box();
-            painter.extend(space.paint(&camera));
+            let shapes = black_box(space.paint(&camera));
+            painter.extend(shapes);
             ui.ctx().request_repaint();
             response
         });
